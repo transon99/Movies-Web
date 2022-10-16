@@ -3,10 +3,8 @@ import footerImg from '../../assets/images/footer-bg.jpg'
 export default function Footer() {
     return (
         <>
-            <div className='w-full h-full' style={{ backgroundImage: `url(${footerImg})` }}>
-                {/* <img src={footerImg} alt='footer' /> */}
-
-                <footer className="p-4 text-white sm:p-6 ">
+            <div className='w-full h-full mt-auto' style={{ backgroundImage: `url(${footerImg})` }}>
+                <footer className="p-4 text-white sm:p-6 relative">
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
                             <h2 className="mb-6 text-sm font-semibold text-white uppercase dark:text-white">Help</h2>
@@ -14,7 +12,7 @@ export default function Footer() {
                                 <li className="mb-4">
                                     <a href="" className="hover:underline">FAQs</a>
                                 </li>
-                                <li>
+                                <li className="mb-4">
                                     <a href="" className="hover:underline">Contact Us</a>
                                 </li>
                             </ul>

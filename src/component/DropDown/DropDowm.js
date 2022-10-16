@@ -1,11 +1,12 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../../Firebase';
 
 export default function DropDowm() {
     const [active, setActive] = useState(false)
+    const navigate = useNavigate()
     const user = useSelector(state => state.user.user);
     const handleLogoutasync = async () => {
         try {
@@ -16,6 +17,10 @@ export default function DropDowm() {
     };
     const handleMenu = () => {
         setActive(!active)
+    }
+    const goToSave = () => {
+        navigate('/account')
+        setActive(false)
     }
     const classMenu = ['absolute', 'right-0', 'z-10', 'mt-2', 'w-56', 'origin-top-right', 'rounded-md', 'bg-black/80', 'shadow-lg', 'ring-1', 'ring-black', 'ring-opacity-5', 'focus:outline-none', active ? 'opacity-100' : 'opacity-0']
     return (
@@ -33,7 +38,7 @@ export default function DropDowm() {
                         <Link to={'/'} className="text-white block px-4 py-2 text-sm hover:underline" role="menuitem" tabIndex={-1} id="menu-item-0">{`Signed in as ${user.email}`}</Link>
                         <hr />
                         <Link to={'/'} className="text-white block px-4 py-2 text-sm hover:underline" role="menuitem" tabIndex={-1} id="menu-item-0">Account settings</Link>
-                        <Link to={'/account'} className="text-white block px-4 py-2 text-sm hover:underline" role="menuitem" tabIndex={-1} id="menu-item-2">My Movies</Link>
+                        <div onClick={goToSave} className="text-white block px-4 py-2 text-sm hover:underline cursor-pointer" role="menuitem" tabIndex={-1} id="menu-item-2">My Movies</div>
                         <Link to={'/'} className="text-white block px-4 py-2 text-sm hover:underline" role="menuitem" tabIndex={-1} id="menu-item-1">Support</Link>
                         <Link to={'/'} className="text-white block px-4 py-2 text-sm hover:underline" role="menuitem" tabIndex={-1} id="menu-item-2">License</Link>
                         <hr />

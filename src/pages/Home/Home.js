@@ -12,7 +12,7 @@ export default function Home() {
         dispatch(getTopRatedMovies());
         dispatch(getActionMovies());
         dispatch(getComedyMovies());
-    }, [])
+    }, [dispatch])
 
     const result = useSelector(state => state.movies)
     return (

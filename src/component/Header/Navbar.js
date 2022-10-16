@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { login, logout } from "../../redux/userSlice";
 import { auth } from "../../Firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import DropDown from "../DropDown/DropDowm";
 
 export const Navbar = () => {
@@ -50,14 +50,6 @@ export const Navbar = () => {
   }
   const classNav = ['px-4', 'flex', 'items-center', 'justify-between', 'z-10', 'fixed', 'w-full', scrollY < 50 ? 'bg-transparent transition duration-500 ease-in-out' : 'bg-black/80 transition duration-500 ease-in-out']
 
-  const handleLogoutasync = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div className={classNav.join(' ')}>
       <div className="flex items-center cursor-pointer " onClick={goHome}>
@@ -89,24 +81,8 @@ export const Navbar = () => {
         </div>
       </div>
       {user?.email ?
-
-        // <div className="flex items-center cursor-pointer">
-        //   <img className="w-6 h-6 rounded-md md:w-8 md:h-8" src="https://occ-0-58-64.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABY20DrC9-11ewwAs6nfEgb1vrORxRPP9IGmlW1WtKuaLIz8VxCx5NryzDK3_ez064IsBGdXjVUT59G5IRuFdqZlCJCneepU.png?r=229" alt="avatar" />
-        //   <span className="ml-2 w-0 h-0 
-        //     border-l-[5px] border-l-transparent
-        //     border-t-[5px] border-t-white
-        //     border-r-[5px] border-r-transparent"></span>
-        // </div>
-        // <div className="flex items-center">
-        //   <Link to={'/account'}>
-        //     <div className="text-white mr-3">Account</div>
-        //   </Link>
-        //   <div className="text-white bg-red-600 md:py-2 md:px-4 rounded-md p-1 cursor-pointer" onClick={handleLogoutasync}>Logout</div>
-
-        // </div>
         <DropDown />
         :
-
         <Link to={'/login'}>
           <div className="text-white bg-red-600 md:py-2 md:px-4 rounded-md p-1">Login</div>
         </Link>
