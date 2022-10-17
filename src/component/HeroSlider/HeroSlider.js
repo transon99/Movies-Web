@@ -6,7 +6,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 // import required modules
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Autoplay, Pagination, Navigation } from "swiper";
 import "./styles.css";
 export default function HeroSlider() {
